@@ -1,0 +1,4 @@
+[29-Dec-2024 22:41:04 America/Chicago] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home2/alkhtabo/alkhtaboot.net/config/database.php:19
+Stack trace:
+#0 {main}
+  thrown in /home2/alkhtabo/alkhtaboot.net/config/database.php on line 19
