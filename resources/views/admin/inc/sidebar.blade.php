@@ -2,7 +2,7 @@
     <div class="sidebar-logo">
         <!-- Logo Header -->
         <div class="logo-header" data-background-color="dark">
-            <a href="{{route('dashboard')}}" class="logo mt-5" >
+            <a href="{{route('dashboard')}}" class="logo mt-5">
                 <img src="/uploads/setting/{{ $setting->logo }}" width="100px" height="100px" alt="navbar brand" class="navbar-brand"
                     height="20" />
             </a>
@@ -51,7 +51,7 @@
                     </div>
                 </li>
 
-               
+
 
 
 
@@ -120,25 +120,45 @@
 
 
                 <li class="nav-item">
-                <a data-bs-toggle="collapse" href="#tables">
-                  <i class="fas fa-table"></i>
-                  <p>{{ __('translate.clients') }}</p>
-                  <span class="caret"></span>
-                </a>
-                <div class="collapse" id="tables">
-                  <ul class="nav nav-collapse">
-                    <li>
-                      <a href="{{ route('show.clients.page') }}">
-                        <span class="sub-item">{{ __('translate.show-clients') }}</span>
-                      </a>
-                    </li>
-                    
-                  </ul>
-                </div>
-              </li>
+                    <a data-bs-toggle="collapse" href="#tables">
+                        <i class="fas fa-table"></i>
+                        <p>{{ __('translate.clients') }}</p>
+                        <span class="caret"></span>
+                    </a>
+                    <div class="collapse" id="tables">
+                        <ul class="nav nav-collapse">
+                            <li>
+                                <a href="{{ route('show.clients.page') }}">
+                                    <span class="sub-item">{{ __('translate.show-clients') }}</span>
+                                </a>
+                            </li>
+
+                        </ul>
+                    </div>
+                </li>
 
 
 
+                <li class="nav-item">
+                    <a data-bs-toggle="collapse" href="#maps">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <p>{{ __('translate.branches') }}</p>
+                        <span class="caret"></span>
+                    </a>
+                    <div class="collapse" id="maps">
+                        <ul class="nav nav-collapse">
+                            @foreach ($branches as $branch)
+                            <li>
+                                <a href="{{ route('show.branch.invoices', $branch->id) }}">
+                                    <span class="sub-item">{{ $branch->name }}</span>
+                                </a>
+                            </li>
+                            @endforeach
+                            
+                            
+                        </ul>
+                    </div>
+                </li>
 
 
 
@@ -147,9 +167,9 @@
 
 
                 <li class="nav-item">
-                    <a href="widgets.html">
+                    <a href="{{ route('show.checks.page') }}">
                         <i class="fas fa-desktop"></i>
-                        <p>Widgets</p>
+                        <p>{{__('translate.checks')}}</p>
                         <span class="badge badge-success">4</span>
                     </a>
                 </li>

@@ -111,4 +111,16 @@ class Invoices_controller extends Controller
             return view("404", compact('th'));
         }
     }
+
+
+    // show_branch_invoices
+    public function show_branch_invoices($id){
+        try {
+            $branch = Branch::findOrFail($id);
+            $invoices = $branch->invoices()->get();
+            return view("admin.invoices.index", compact("invoices"));
+        } catch (\Throwable $th) {
+            return view("404", compact('th'));
+        }
+    }
 }

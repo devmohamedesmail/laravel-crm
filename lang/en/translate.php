@@ -56,5 +56,14 @@ return [
     "deleted"=>"Deleted Successfully",
     "updated" => "Updated Successfully",
     "reset-staff"=>"Reset Staff ",
+    "branches"=>"Branches",
+    "checks"=>"Checks",
+    "issuer"=>" Isser ",
+    "amount" => " Amount",
+    "statement" => " Statement",
+    "number" => " Number",
+    "date" => " Date",
+    "credit" => " Credit",
+    "add-check" => " Add Check ",
     
 ];

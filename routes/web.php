@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\webController\Checks_controller;
 use App\Http\Controllers\webController\Client_controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -52,6 +53,7 @@ Route::group(['prefix' => LaravelLocalization::setLocale()], function () {
         Route::get('print/invoice/{id}', 'print_invoice')->name('print.invoice');
         Route::get('delete/invoice/{id}', 'delete_invoice')->name('delete.invoice');
         Route::post('edit/invoice/confirmation{id}', 'edit_invoice_confimation')->name('edit.invoice.confirmation');
+        Route::get('show/branch/invoices/{id}', 'show_branch_invoices')->name('show.branch.invoices');
     });
     // invocies controller end
 
@@ -81,6 +83,19 @@ Route::group(['prefix' => LaravelLocalization::setLocale()], function () {
         Route::get('reset/staff/data', 'reset_staff_data')->name('reset.staff.data')->middleware('auth');
     });
     // staff controller end
+
+
+    // checks controller start
+    Route::controller(Checks_controller::class)->group(function () {
+        Route::get('show/checks/page', 'show_checks_page')->name('show.checks.page')->middleware('auth');
+        Route::get('add/check/page', 'add_check_page')->name('add.check.page')->middleware('auth');
+        Route::post('add/check', 'add_check')->name('add.check')->middleware('auth');
+        Route::get('delete/check/{id}', 'delete_check')->name('delete.check')->middleware('auth');
+        Route::get('edit/check/{id}', 'edit_check')->name('edit.check')->middleware('auth');
+        Route::post('edit/check/confirm/{id}', 'edit_check_confirm')->name('edit.check.confirm')->middleware('auth');
+        
+    });
+    // checks controller end
 
 
 
