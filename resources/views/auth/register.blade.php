@@ -1,13 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     @include('admin.inc.style')
 </head>
+
 <body>
 
 
 
-<div class="bg-white d-flex flex-row justify-content-end px-5 py-3">
+    <div class="bg-white d-flex flex-row justify-content-end px-5 py-3">
         <ul class="navbar-nav topbar-nav ">
 
             <li class="nav-item topbar-icon dropdown hidden-caret">
@@ -38,68 +40,68 @@
         <div class="row h-100 d-flex align-items-center justify-content-center" style="height: 100vh !important">
             <div class="col-md-6">
                 <div class="card">
-                    <div class="card-header text-center">{{  __("translate.register") }}</div>
-    
+                    <div class="card-header text-center">{{ __("translate.register") }}</div>
+
                     <div class="card-body">
                         <form method="POST" action="{{ route('register') }}">
                             @csrf
-    
+
                             <div class="row mb-3">
-                                <label for="name" class="d-block @if (LaravelLocalization::getCurrentLocale() == 'ar') text-end @endif">{{  __("translate.name") }}</label>
-    
+                                <label for="name" class="d-block @if (LaravelLocalization::getCurrentLocale() == 'ar') text-end @endif">{{ __("translate.name") }}</label>
+
                                 <div class="">
                                     <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
-    
+
                                     @error('name')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
                                     @enderror
                                 </div>
                             </div>
-    
+
                             <div class="row mb-3">
-                                <label for="email" class="d-block @if (LaravelLocalization::getCurrentLocale() == 'ar') text-end @endif">{{  __("translate.email") }}</label>
-    
+                                <label for="email" class="d-block @if (LaravelLocalization::getCurrentLocale() == 'ar') text-end @endif">{{ __("translate.email") }}</label>
+
                                 <div class="">
                                     <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
-    
+
                                     @error('email')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
                                     @enderror
                                 </div>
                             </div>
-    
+
                             <div class="row mb-3">
-                                <label for="password" class="d-block @if (LaravelLocalization::getCurrentLocale() == 'ar') text-end @endif">{{  __("translate.password") }}</label>
-    
+                                <label for="password" class="d-block @if (LaravelLocalization::getCurrentLocale() == 'ar') text-end @endif">{{ __("translate.password") }}</label>
+
                                 <div class="">
                                     <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
-    
+
                                     @error('password')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
                                     @enderror
                                 </div>
                             </div>
-    
-                         
-    
+
+
+
                             <div class="">
                                 <button type="submit" class="btn btn-primary w-100">
-                                    {{  __("translate.register") }}
+                                    {{ __("translate.register") }}
                                 </button>
                             </div>
                             <div class="d-flex align-items-center justify-content-center">
-                                <p> {{  __("translate.have-account") }}
+                                <p> {{ __("translate.have-account") }}
                                     <a class="btn btn-link " href="{{ route('login') }}">
-                                    {{  __("translate.login") }}
+                                        {{ __("translate.login") }}
                                     </a>
                                 </p>
-                              
+
                             </div>
                         </form>
                     </div>
@@ -108,4 +110,5 @@
         </div>
     </div>
 </body>
+
 </html>

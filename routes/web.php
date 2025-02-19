@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\webController\Staff_controller;
 use App\Http\Controllers\webController\Dashboard_controller;
 use App\Http\Controllers\webController\Invoices_controller;
+use App\Http\Controllers\webController\Purchases_controller;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
 
@@ -96,6 +97,15 @@ Route::group(['prefix' => LaravelLocalization::setLocale()], function () {
         
     });
     // checks controller end
+
+
+    // Purchases Controller start
+    Route::controller(Purchases_controller::class)->group(function () {
+        Route::get('show/purcheases/page','show_purchases_page')->name('show.purcheases.page')->middleware('auth');
+        Route::get('add/purcheases/page','add_purchases_page')->name('add.purcheases.page')->middleware('auth');
+        Route::post('add/purcheases','add_purchases')->name('add.purchase')->middleware('auth');
+    });
+    // Purchases Controller end
 
 
 

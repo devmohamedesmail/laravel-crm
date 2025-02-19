@@ -47,7 +47,7 @@ class InvoiceController extends Controller
 
     // show_invoices
     public function show_invoices(){
-        $invoices = Invoice::with('branch')->get();
+        $invoices = Invoice::with('branch')->orderBy('id', 'desc')->get();
         return response()->json([
             'data'=>$invoices,
             'message'=>'Invoices fetched successfully',

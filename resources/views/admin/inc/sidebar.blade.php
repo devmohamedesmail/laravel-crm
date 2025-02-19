@@ -160,7 +160,27 @@
                     </div>
                 </li>
 
-
+                <li class="nav-item">
+                <a data-bs-toggle="collapse" href="#charts">
+                  <i class="far fa-chart-bar"></i>
+                  <p>{{ __('translate.purchases') }}</p>
+                  <span class="caret"></span>
+                </a>
+                <div class="collapse" id="charts">
+                  <ul class="nav nav-collapse">
+                    <li>
+                      <a href="{{ route('show.purcheases.page') }}">
+                        <span class="sub-item">{{ __('translate.show-purchases') }}</span>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="{{ route('add.purcheases.page') }}">
+                        <span class="sub-item">{{ __('translate.add-purchases') }}</span>
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+              </li>
 
 
 

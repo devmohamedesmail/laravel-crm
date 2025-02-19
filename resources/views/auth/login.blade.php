@@ -10,6 +10,30 @@
 
 
 
+<div class="bg-white d-flex flex-row justify-content-end px-5 py-3">
+        <ul class="navbar-nav topbar-nav ">
+
+            <li class="nav-item topbar-icon dropdown hidden-caret">
+                <a class="nav-link dropdown-toggle" href="#" id="messageDropdown"
+                    role="button" data-bs-toggle="dropdown" aria-haspopup="true"
+                    aria-expanded="false">
+                    {{ LaravelLocalization::getCurrentLocaleNative() }}
+                </a>
+
+
+
+                <ul class="dropdown-menu messages-notif-box animated fadeIn">
+                    @foreach(LaravelLocalization::getSupportedLocales() as $localeCode => $properties)
+                    <li class="mx-2">
+                        <a rel="alternate" class="p-3  d-block" hreflang="{{ $localeCode }}" href="{{ LaravelLocalization::getLocalizedURL($localeCode, null, [], true) }}">
+                            {{ $properties['native'] }}
+                        </a>
+                    </li>
+                    @endforeach
+                </ul>
+            </li>
+        </ul>
+    </div>
 
 
 

@@ -65,5 +65,19 @@ return [
     "date" => " Date",
     "credit" => " Credit",
     "add-check" => " Add Check ",
+
+
+
+    "add-purchase"=>"Add Purchase",
+    "show-purchases"=>"Show Purchases",
+    "purchases"=>"Purchases",
+    "title"=>"Title",
+    "department"=>"Department",
+    "quantity"=>"Quantity",
+    "price"=>"Price",
+    "total"=>"Total",
+    
+   
+
     
 ];

@@ -67,4 +67,11 @@ return [
     "date" => " التاريخ ",
     "credit" => " الدائن / المدين",
     "add-check" => " اضافه شيك ",
+
+
+
+
+    "add-purchase"=>" اضافة شراء ",
+    "show-purchases"=>" عرض الشراء ",
+    "purchases"=>" الشراء ",
 ];
