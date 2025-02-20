@@ -13,7 +13,10 @@ use App\Traits\AddInvoiceTrait;
 class Invoices_controller extends Controller
 {
     use AddInvoiceTrait;
-    // show_invoices
+
+
+
+    // ******************************************** show_invoices ******************************************/
     public function show_invoices()
     {
 
@@ -25,8 +28,18 @@ class Invoices_controller extends Controller
         }
     }
 
+    // ******************************************** show_invoices ******************************************/
 
-    // add_invoice
+
+
+
+
+
+
+
+
+
+    // ******************************************** Add New Invoice ******************************************/
     public function add_invoice(Request $request)
     {
         try {
@@ -36,7 +49,16 @@ class Invoices_controller extends Controller
         }
     }
 
-    // edit_invoice
+    // ******************************************** Add New Invoice ******************************************/
+
+
+
+
+
+
+
+
+    //**********************************************  Edit invoice *****************************************/
     public function edit_invoice($id)
     {
 
@@ -47,9 +69,16 @@ class Invoices_controller extends Controller
             return view("404", compact('th'));
         }
     }
+    //**********************************************  Edit invoice *****************************************/
 
 
-    // edit_invoice_confimation
+
+
+
+
+
+
+    //**********************************************  Edit invoice Confiramtion *****************************************/
     public function edit_invoice_confimation($id, Request $request)
     {
         $invoice = Invoice::findOrFail($id,);
@@ -75,10 +104,19 @@ class Invoices_controller extends Controller
         $invoice->save();
         return redirect()->back()->with('success', __('translate.updated'));
     }
+    //**********************************************  Edit invoice Confiramtion *****************************************/
 
 
 
-    // add_invoice 
+
+
+
+
+
+
+
+
+    //*********************************************  add_invoice *****************************************************/
     public function add_new_invoice(Request $request)
     {
 
@@ -87,20 +125,45 @@ class Invoices_controller extends Controller
         return redirect()->back()->with('success', __('translate.added'));
     }
 
+    //*********************************************  add_invoice *****************************************************/
 
-    private  function add_invoice_template(Request $request) {}
 
 
-    // delete_invoice
+
+
+
+
+
+
+
+
+
+
+
+    // ******************************************** delete_invoice ************************************************/
     public function delete_invoice($id)
     {
         $invoice = Invoice::findOrFail($id);
         $invoice->delete();
         return redirect()->back()->with('success', __('translate.deleted'));
     }
+    // ******************************************** delete_invoice ************************************************/
 
 
-    // print invoice
+
+
+
+
+
+
+
+
+
+
+
+
+
+    // ***************************************************** print invoice ****************************************/
     public function print_invoice($id)
     {
         try {
@@ -111,10 +174,27 @@ class Invoices_controller extends Controller
             return view("404", compact('th'));
         }
     }
+    // ***************************************************** print invoice ****************************************/
 
 
-    // show_branch_invoices
-    public function show_branch_invoices($id){
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    // ********************************************* show_branch_invoices ******************************************/
+    public function show_branch_invoices($id)
+    {
         try {
             $branch = Branch::findOrFail($id);
             $invoices = $branch->invoices()->get();
@@ -123,4 +203,6 @@ class Invoices_controller extends Controller
             return view("404", compact('th'));
         }
     }
+
+    // ********************************************* show_branch_invoices ******************************************/
 }

@@ -61,7 +61,7 @@
                 <li class="nav-item">
                     <a data-bs-toggle="collapse" href="#base">
                         <i class="fas fa-layer-group"></i>
-                        <p>{{ __('translate.invoices') }}</p>
+                        <p class="text-white">{{ __('translate.invoices') }}</p>
                         <span class="caret"></span>
                     </a>
                     <div class="collapse" id="base">
@@ -69,13 +69,13 @@
 
                             <li>
                                 <a href="{{ route('show.invoices') }}">
-                                    <span class="sub-item">{{ __('translate.show-invoices') }}</span>
+                                    <span class="sub-item text-white">{{ __('translate.show-invoices') }}</span>
                                 </a>
                             </li>
 
                             <li>
                                 <a href="{{ route('add.invoice') }}">
-                                    <span class="sub-item">{{ __('translate.add-invoice') }}</span>
+                                    <span class="sub-item text-white">{{ __('translate.add-invoice') }}</span>
                                 </a>
                             </li>
 

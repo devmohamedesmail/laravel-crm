@@ -8,6 +8,15 @@ trait AddInvoiceTrait
 {
     public function storeInvoiceData($model,$request)
     {
+        $validated = $request->validate([
+            'branch' => 'required',
+            'carNo' => 'required',
+            'carType' => 'required',
+            'carService' => 'required',
+            'price' => 'required',
+            'note' => 'required',
+
+        ]);
         $invoice = new $model();
         $invoice->branch_id = $request->branch;
         $invoice->branchName = $request->branchName;
