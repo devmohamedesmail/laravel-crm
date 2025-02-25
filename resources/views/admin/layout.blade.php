@@ -5,29 +5,22 @@
     @include('admin.inc.style')
 </head>
 
-<body>
-    <div class="wrapper">
-        <!-- Sidebar -->
-        @include('admin.inc.sidebar')
-        <!-- End Sidebar -->
+<body data-theme="fantasy">
+    <div class="flex ">
 
-        <div class="main-panel">
-           @include('admin.inc.header')
-
-            <div class="container">
-                <div class="page-inner">
-                    
-                 @yield('content')
-               
-                 
-                    
-                </div>
+        <div class="bg-fuchsia-950 h-screen w-0 overflow-hidden lg:w-64">
+            @include('admin.inc.sidebar')
+        </div>
+        <div class="flex-1  ">
+            <div class="bg-white h-18 sticky top-0 border border-b-fuchsia-950">
+                @include('admin.inc.header')
             </div>
-
+            <div class="p-3">
+                @yield('content')
+            </div>
         </div>
 
-        <!-- Custom template | don't include it in your project! -->
-        @include('admin.inc.setting')
-        <!-- End Custom template -->
+
     </div>
+
     @include('admin.inc.script')

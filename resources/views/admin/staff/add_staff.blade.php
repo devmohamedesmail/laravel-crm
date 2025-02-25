@@ -1,31 +1,24 @@
 @extends('admin.layout')
 @section('content')
+    @if (session('success'))
+        <div role="alert" class="alert my-5">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="stroke-info h-6 w-6 shrink-0">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+            <span>{{ session('success') }}</span>
+            <button class="btn btn-sm btn-primary" onclick="this.parentElement.remove()"><i
+                    class="fa-solid fa-xmark"></i></button>
+        </div>
+    @endif
 
 
 
 
+    <div class="flex justify-end">
 
-
-@if (session('success'))
-<script>
-    Toastify({
-        text: "{{ session('success') }}",
-        duration: 3000, // Duration in milliseconds
-        close: true, // Show close button
-        gravity: "top", // Position top of the screen
-        position: "right", // Position right side
-        backgroundColor: "green", // Custom background color
-        stopOnFocus: true, // Stop toast on focus
-    }).showToast();
-</script>
-@endif
-
-
-
-
-<div class="d-flex justify-content-end">
-    <a href="{{ route('show.staff.page') }}" class="btn btn-primary">{{ __('translate.show-staff') }}</a>
-</div>
+        <a href="{{ route('show.staff.page') }}" class="btn btn-primary">{{ __('translate.show-staff') }}</a>
+    </div>
 
 
 
@@ -33,86 +26,89 @@
 
 
 
-<form action="{{ route('add.staff') }}" method="post">
-    @csrf
-    <div class="row bg-white my-3 p-3">
+    <form action="{{ route('add.staff') }}" method="post">
+        @csrf
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-10">
 
 
-        <div class="col-12 col-md-6">
-            <div class="form-group">
-                <label>{{ __('translate.department') }}</label>
-                <select class="form-select" name="department">
 
+
+
+            <div>
+                <label
+                    class="mb-2 font-bold block @if (app()->getlocale() === 'ar') text-right @endif">{{ __('translate.department') }}</label>
+                <select class="select select-primary w-full " name="department">
                     @foreach ($departments as $department)
-                    <option value="{{ $department->id }}"> {{ $department->name }} </option>
+                        <option value="{{ $department->id }}"> {{ $department->name }} </option>
                     @endforeach
                 </select>
-            </div>
-        </div>
-
-
-
-
-
-
-
-        <div class="col-12 col-md-6">
-            <div class="form-group">
-                <label>{{ __('translate.name') }}</label>
-                <input type="text" class="form-control" name="name" />
 
             </div>
-        </div>
-        <div class="col-12 col-md-6">
-            <div class="form-group">
-                <label>{{ __('translate.salary') }}</label>
-                <input type="number" class="form-control" name="salary" />
 
+
+
+
+
+
+
+
+            <div>
+                <label
+                    class="mb-2 font-bold block @if (app()->getlocale() === 'ar') text-right @endif">{{ __('translate.name') }}</label>
+                <input type="text" class="input input-bordered input-primary w-full " name="name" />
             </div>
-        </div>
 
 
 
-        <div class="col-12 col-md-6">
-            <div class="form-group">
-                <label>{{ __('translate.discount') }}</label>
-                <input type="text" class="form-control" name="discount" />
 
+            <div>
+                <label
+                    class="mb-2 font-bold block @if (app()->getlocale() === 'ar') text-right @endif">{{ __('translate.salary') }}</label>
+                <input type="text" class="input input-bordered input-primary w-full " name="salary" />
             </div>
-        </div>
 
-        <div class="col-12 col-md-6">
-            <div class="form-group">
-                <label>{{ __('translate.advance') }}</label>
-                <input type="text" class="form-control" name="advance" />
 
+
+
+            <div>
+                <label
+                    class="mb-2 font-bold block @if (app()->getlocale() === 'ar') text-right @endif">{{ __('translate.discount') }}</label>
+                <input type="text" class="input input-bordered input-primary w-full " name="discount" />
             </div>
-        </div>
 
-        <div class="col-12 col-md-6">
-            <div class="form-group">
-                <label>{{ __('translate.comments') }}</label>
 
-                <textarea type="text" class="form-control" name="comments"></textarea>
+
+
+
+
+
+
+
+            <div>
+                <label
+                    class="mb-2 font-bold block @if (app()->getlocale() === 'ar') text-right @endif">{{ __('translate.advance') }}</label>
+                <input type="text" class="input input-bordered input-primary w-full " name="advance" />
             </div>
+
+
+
+
+            <div>
+                <label
+                    class="mb-2 font-bold block @if (app()->getlocale() === 'ar') text-right @endif">{{ __('translate.comments') }}</label>
+                <textarea class="textarea textarea-primary w-full" name="comments"></textarea>
+            </div>
+
+
+
+
+
+            <div class="col-12 ">
+                <button type="submit" class="btn btn-primary w-full">{{ __('translate.add') }}</button>
+            </div>
+
+
+
         </div>
-
-
-
-
-
-
-
-
-
-
-
-        <div class="col-12 ">
-            <button type="submit" class="btn btn-primary w-100">{{ __('translate.add') }}</button>
-        </div>
-
-
-
-    </div>
-</form>
+    </form>
 @endsection

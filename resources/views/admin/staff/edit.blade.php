@@ -23,7 +23,7 @@
 
 
 
-<div class="d-flex justify-content-end">
+<div class="flex justify-end">
     <a href="{{ route('show.staff.page') }}" class="btn btn-primary">{{ __('translate.show-staff') }}</a>
 </div>
 
@@ -35,19 +35,21 @@
 
 <form action="{{ route('edit.staff' , $staff->id ) }}" method="post">
     @csrf
-    <div class="row bg-white my-3 p-3">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-10">
 
 
-        <div class="col-12 col-md-6">
-            <div class="form-group">
-                <label>{{ __('translate.department') }}</label>
-                <select class="form-select" name="department">
 
-                    @foreach ($departments as $department)
+
+
+        <div>
+            <label
+                class="mb-2 font-bold block @if (app()->getlocale() === 'ar') text-right @endif">{{ __('translate.department') }}</label>
+            <select class="select select-primary w-full " name="department">
+                @foreach ($departments as $department)
                     <option value="{{ $department->id }}"> {{ $department->name }} </option>
-                    @endforeach
-                </select>
-            </div>
+                @endforeach
+            </select>
+
         </div>
 
 
@@ -56,45 +58,29 @@
 
 
 
-        <div class="col-12 col-md-6">
-            <div class="form-group">
-                <label>{{ __('translate.name') }}</label>
-                <input type="text" class="form-control" name="name" value="{{ $staff->name }}" />
 
-            </div>
-        </div>
-        <div class="col-12 col-md-6">
-            <div class="form-group">
-                <label>{{ __('translate.salary') }}</label>
-                <input type="number" class="form-control" name="salary" value="{{ $staff->salary }}" />
-
-            </div>
+        <div>
+            <label
+                class="mb-2 font-bold block @if (app()->getlocale() === 'ar') text-right @endif">{{ __('translate.name') }}</label>
+            <input type="text" class="input input-bordered input-primary w-full " name="name" value="{{ $staff->name }}" />
         </div>
 
 
 
-        <div class="col-12 col-md-6">
-            <div class="form-group">
-                <label>{{ __('translate.discount') }}</label>
-                <input type="text" class="form-control" name="discount" value="{{ $staff->discount }}" />
 
-            </div>
+        <div>
+            <label
+                class="mb-2 font-bold block @if (app()->getlocale() === 'ar') text-right @endif">{{ __('translate.salary') }}</label>
+            <input type="text" class="input input-bordered input-primary w-full " name="salary" value="{{ $staff->salary }}" />
         </div>
 
-        <div class="col-12 col-md-6">
-            <div class="form-group">
-                <label>{{ __('translate.advance') }}</label>
-                <input type="text" class="form-control" name="advance" value="{{ $staff->advance }}" />
 
-            </div>
-        </div>
 
-        <div class="col-12 col-md-6">
-            <div class="form-group">
-                <label>{{ __('translate.comments') }}</label>
 
-                <textarea type="text" class="form-control" name="comments"> {{ $staff->comments }} </textarea>
-            </div>
+        <div>
+            <label
+                class="mb-2 font-bold block @if (app()->getlocale() === 'ar') text-right @endif">{{ __('translate.discount') }}</label>
+            <input type="text" class="input input-bordered input-primary w-full " name="discount" value="{{ $staff->discount }}" />
         </div>
 
 
@@ -102,13 +88,30 @@
 
 
 
+
+
+
+        <div>
+            <label
+                class="mb-2 font-bold block @if (app()->getlocale() === 'ar') text-right @endif">{{ __('translate.advance') }}</label>
+            <input type="text" class="input input-bordered input-primary w-full " name="advance" value="{{ $staff->advance }}" />
+        </div>
+
+
+
+
+        <div>
+            <label
+                class="mb-2 font-bold block @if (app()->getlocale() === 'ar') text-right @endif">{{ __('translate.comments') }}</label>
+            <textarea class="textarea textarea-primary w-full" name="comments">{{ $staff->comments }}</textarea>
+        </div>
 
 
 
 
 
         <div class="col-12 ">
-            <button type="submit" class="btn btn-primary w-100">{{ __('translate.add') }}</button>
+            <button type="submit" class="btn btn-primary w-full">{{ __('translate.edit') }}</button>
         </div>
 
 

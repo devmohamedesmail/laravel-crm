@@ -31,30 +31,30 @@ Route::group(['prefix' => LaravelLocalization::setLocale()], function () {
 
 
 
-    Route::get('/', function () {
-        return view('auth.login');
-    });
+    Route::get('/', function () {return view('auth.login');});
 
 
 
 
 
     Route::controller(Dashboard_controller::class)->group(function () {
-        Route::get('/dashboard', 'index')->name('dashboard');
+        Route::get('/dashboard', 'index')->name('dashboard')->middleware('auth');
+        Route::get('contact/us/', 'contact_us')->name('contact.us');
+        Route::get('privacy/policy', 'privacy_policy')->name('privacy.policy');
     });
 
 
 
     // invocies controller start
     Route::controller(Invoices_controller::class)->group(function () {
-        Route::get('show/invoices', 'show_invoices')->name('show.invoices');
-        Route::get('add/invoice', 'add_invoice')->name('add.invoice');
-        Route::post('add/invoice', 'add_new_invoice')->name('add.invoice');
-        Route::get('edit/invoice/{id}', 'edit_invoice')->name('edit.invoice');
-        Route::get('print/invoice/{id}', 'print_invoice')->name('print.invoice');
-        Route::get('delete/invoice/{id}', 'delete_invoice')->name('delete.invoice');
-        Route::post('edit/invoice/confirmation{id}', 'edit_invoice_confimation')->name('edit.invoice.confirmation');
-        Route::get('show/branch/invoices/{id}', 'show_branch_invoices')->name('show.branch.invoices');
+        Route::get('show/invoices', 'show_invoices')->name('show.invoices')->middleware('auth');
+        Route::get('add/invoice', 'add_invoice')->name('add.invoice')->middleware('auth');
+        Route::post('add/invoice', 'add_new_invoice')->name('add.invoice')->middleware('auth');
+        Route::get('edit/invoice/{id}', 'edit_invoice')->name('edit.invoice')->middleware('auth');
+        Route::get('print/invoice/{id}', 'print_invoice')->name('print.invoice')->middleware('auth');
+        Route::get('delete/invoice/{id}', 'delete_invoice')->name('delete.invoice')->middleware('auth');
+        Route::post('edit/invoice/confirmation{id}', 'edit_invoice_confimation')->name('edit.invoice.confirmation')->middleware('auth');
+        Route::get('show/branch/invoices/{id}', 'show_branch_invoices')->name('show.branch.invoices')->middleware('auth');
     });
     // invocies controller end
 
