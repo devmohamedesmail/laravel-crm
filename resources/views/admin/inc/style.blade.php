@@ -11,5 +11,5 @@
 {{-- datatables style --}}
 <link rel="stylesheet" href="https://cdn.datatables.net/2.2.2/css/dataTables.dataTables.css" />
 
-
+<meta name="csrf-token" content="{{ csrf_token() }}">
 

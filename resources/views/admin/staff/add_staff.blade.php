@@ -30,10 +30,6 @@
         @csrf
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-10">
 
-
-
-
-
             <div>
                 <label
                     class="mb-2 font-bold block @if (app()->getlocale() === 'ar') text-right @endif">{{ __('translate.department') }}</label>

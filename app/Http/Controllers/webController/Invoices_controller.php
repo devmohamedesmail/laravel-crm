@@ -7,8 +7,9 @@ use App\Models\Client;
 use App\Models\Invoice;
 use App\Models\InvoiceNote;
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
+use App\Events\InvoiceCreated;
 use App\Traits\AddInvoiceTrait;
+use App\Http\Controllers\Controller;
 
 class Invoices_controller extends Controller
 {
@@ -122,7 +123,12 @@ class Invoices_controller extends Controller
 
         $invoice = $this->storeInvoiceData(Invoice::class, $request);
         $client = $this->storeInvoiceData(Client::class, $request);
-        return redirect()->back()->with('success', __('translate.added'));
+        event(new InvoiceCreated($invoice));
+        // return redirect()->back()->with('success', __('translate.added'));
+        return redirect()->back()->with([
+            'success' => __('translate.added'),
+            'invoice_id' => $invoice->id, // Store invoice ID in session
+        ]);
     }
 
     //*********************************************  add_invoice *****************************************************/

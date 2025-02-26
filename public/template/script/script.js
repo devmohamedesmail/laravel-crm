@@ -15,6 +15,6 @@ let sidebar = document.querySelector('.sidebar')
 let sidebarBtn = document.querySelector('.sidebarBtn')
 sidebarBtn.addEventListener('click', () => {
    
-    sidebar.classList.toggle('w-fit')
+    sidebar.classList.toggle('w-64')
     sidebarBtn.classList.toggle('active')
 })

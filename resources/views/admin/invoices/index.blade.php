@@ -4,16 +4,25 @@
 
 
 
-
 @if (session('success'))
-<div role="alert" class="alert my-5">
-    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="stroke-info h-6 w-6 shrink-0">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-            d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-    </svg>
-    <span>{{ session('success') }}</span>
-    <button class="btn btn-sm btn-primary" onclick="this.parentElement.remove()"><i class="fa-solid fa-xmark"></i></button>
-</div>
+      
+        
+<dialog id="my_modal_1" class="modal">
+    <div class="modal-box">
+        <h3 class="text-3xl font-bold text-center">{{ __('translate.thank-you') }} {{ auth()->user()->name }} 👋</h3>
+        <p class="py-4 text-center">{{ session('success') }}</p>
+        <div class="modal-action">
+            <form method="dialog">
+                
+                <button class="btn btn-primary">ok</button>
+            </form>
+        </div>
+    </div>
+</dialog>
+
+<script>
+  document.getElementById("my_modal_1").showModal()
+</script>
 @endif
 
 
@@ -30,64 +39,159 @@
     <a href="{{ route('add.invoice') }}" class="btn btn-primary">{{ __('translate.add-invoice') }}</a>
 </div>
    
-<table  id="myTable" class="display table table-striped table-hover">
-    <thead>
-        <tr>
-            <th>ID</th> 
-            <th>{{ __('translate.name') }}</th>
-            <th>{{ __('translate.phone') }}</th>
-            <th>{{ __('translate.car-no') }}</th>
-            <th>{{ __('translate.car-type') }}</th>
-            <th>{{ __('translate.price') }}</th>
-            <th>{{ __('translate.sales') }}</th>
-            <th>{{ __('translate.actions') }}</th>
-
-
-        </tr>
-    </thead>
-    <tfoot>
-        <tr>
-            <th>ID</th>
-            <th>{{ __('translate.name') }}</th>
-            <th>{{ __('translate.phone') }}</th>
-            <th>{{ __('translate.car-no') }}</th>
-            <th>{{ __('translate.car-type') }}</th>
-            <th>{{ __('translate.price') }}</th>
-            <th>{{ __('translate.sales') }}</th>
-
-        </tr>
-    </tfoot>
-    <tbody>
-
-        @foreach ($invoices as $invoice)
+<div class="hidden lg:block">
+    <table  id="myTable" class="display table table-striped table-hover">
+        <thead>
             <tr>
-                <td>{{ $invoice->id }}</td>
-                <td>{{ $invoice->name }}</td>
-                <td>{{ $invoice->phone }}</td>
-                <td>{{ $invoice->carNo }}</td>
-                <td>{{ $invoice->carType }}</td>
-                <td>{{ $invoice->price }}</td>
-                <td>{{ $invoice->sales }}</td>
-                <td>
-                    
-
-
-                    <div class="dropdown">
-                        <div tabindex="0" role="button" class="btn btn-primary m-1">  {{ __('translate.actions') }}</div>
-                        <ul tabindex="0" class="dropdown-content menu bg-base-100 rounded-box z-[1]  p-2 shadow">
-                          <li><a href="{{ route('edit.invoice', $invoice->id) }}">{{ __('translate.edit') }}</a></li>
-                          <li><a href="{{ route('print.invoice', $invoice->id) }}">{{ __('translate.print') }}</a></li>
-                          <li><a href="{{ route('delete.invoice', $invoice->id) }}" onclick="return confirm('Are You Sure To Delete This item')">{{ __('translate.delete') }}</a></li>
-                        </ul>
-                      </div>
-
-
-
-                </td>
-
+                <th>ID</th> 
+                <th>{{ __('translate.name') }}</th>
+                <th>{{ __('translate.phone') }}</th>
+                <th>{{ __('translate.car-no') }}</th>
+                <th>{{ __('translate.car-type') }}</th>
+                <th>{{ __('translate.price') }}</th>
+                <th>{{ __('translate.sales') }}</th>
+                <th>{{ __('translate.actions') }}</th>
+    
+    
             </tr>
-        @endforeach
-    </tbody>
-</table>
+        </thead>
+      
+        <tbody id="invoice-table-body">
+    
+            @foreach ($invoices as $invoice)
+                <tr>
+                    <td>{{ $invoice->id }}</td>
+                    <td>{{ $invoice->name }}</td>
+                    <td>{{ $invoice->phone }}</td>
+                    <td>{{ $invoice->carNo }}</td>
+                    <td>{{ $invoice->carType }}</td>
+                    <td>{{ $invoice->price }}</td>
+                    <td>{{ $invoice->sales }}</td>
+                    <td>
+                        
+    
+    
+                        <div class="dropdown">
+                            <div tabindex="0" role="button" class="btn btn-primary m-1">  {{ __('translate.actions') }}</div>
+                            <ul tabindex="0" class="dropdown-content menu bg-base-100 rounded-box z-[1]  p-2 shadow">
+                              <li><a href="{{ route('edit.invoice', $invoice->id) }}">{{ __('translate.edit') }}</a></li>
+                              <li><a href="{{ route('print.invoice', $invoice->id) }}">{{ __('translate.print') }}</a></li>
+                              <li><a href="{{ route('delete.invoice', $invoice->id) }}" onclick="return confirm('Are You Sure To Delete This item')">{{ __('translate.delete') }}</a></li>
+                            </ul>
+                          </div>
+    
+    
+    
+                    </td>
+    
+                </tr>
+            @endforeach
+        </tbody>
+    </table>
+    
+</div>
+
+
+
+
+
+
+<div class="block lg:hidden">
+    <table  id="myTable" class="display table table-striped table-hover">
+        <thead>
+            <tr>
+                <th>ID</th> 
+                <th>{{ __('translate.phone') }}</th>
+                <th>{{ __('translate.car-no') }}</th>
+                <th>{{ __('translate.car-type') }}</th>
+                <th>{{ __('translate.price') }}</th>
+                <th>{{ __('translate.actions') }}</th>
+    
+    
+            </tr>
+        </thead>
+      
+        <tbody id="invoice-table-body">
+    
+            @foreach ($invoices as $invoice)
+                <tr>
+                    <td>{{ $invoice->id }}</td>
+                    
+                    <td>{{ $invoice->phone }}</td>
+                    <td>{{ $invoice->carNo }}</td>
+                    <td>{{ $invoice->carType }}</td>
+                    <td>{{ $invoice->price }}</td>
+                 
+                    <td>
+                        
+    
+    
+                        <div class="dropdown">
+                            <div tabindex="0" role="button" class="btn btn-primary m-1">  {{ __('translate.actions') }}</div>
+                            <ul tabindex="0" class="dropdown-content menu bg-base-100 rounded-box z-[1]  p-2 shadow">
+                              <li><a href="{{ route('edit.invoice', $invoice->id) }}">{{ __('translate.edit') }}</a></li>
+                              <li><a href="{{ route('print.invoice', $invoice->id) }}">{{ __('translate.print') }}</a></li>
+                              <li><a href="{{ route('delete.invoice', $invoice->id) }}" onclick="return confirm('Are You Sure To Delete This item')">{{ __('translate.delete') }}</a></li>
+                            </ul>
+                          </div>
+    
+    
+    
+                    </td>
+    
+                </tr>
+            @endforeach
+        </tbody>
+    </table>
+    
+</div>
+
+
+
+
+
+<script>
+    import Echo from 'laravel-echo';
+    import Pusher from 'pusher-js';
+
+    window.Pusher = Pusher;
+
+    const echo = new Echo({
+        broadcaster: 'pusher',
+        key: '{{ env("PUSHER_APP_KEY") }}',
+        cluster: '{{ env("PUSHER_APP_CLUSTER") }}',
+        forceTLS: true
+    });
+
+    echo.channel('invoices')
+        .listen('InvoiceCreated', (event) => {
+            const invoice = event.invoice;
+            const newRow = `
+                <tr id="invoice-row-${invoice.id}">
+                    <td>${invoice.id}</td>
+                    <td>${invoice.name}</td>
+                    <td>${invoice.phone}</td>
+                    <td>${invoice.carNo}</td>
+                    <td>${invoice.carType}</td>
+                    <td>${invoice.price}</td>
+                    <td>${invoice.sales}</td>
+                    <td>
+                        <div class="dropdown">
+                            <div tabindex="0" role="button" class="btn btn-primary m-1"> {{ __('translate.actions') }}</div>
+                           <ul tabindex="0" class="dropdown-content menu bg-base-100 rounded-box z-[1] p-2 shadow">
+                                <li><a href="${window.routes.edit}${invoice.id}">{{ __('translate.edit') }}</a></li>
+                                <li><a href="${window.routes.print}${invoice.id}">{{ __('translate.print') }}</a></li>
+                                <li><a href="${window.routes.delete}${invoice.id}" onclick="return confirm('Are You Sure To Delete This item')">{{ __('translate.delete') }}</a></li>
+                            </ul>
+                        </div>
+                    </td>
+                </tr>
+            `;
+            document.getElementById('invoice-table-body').innerHTML += newRow;
+        });
+</script>
+
+
+
 
 @endsection

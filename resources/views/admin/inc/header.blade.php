@@ -1,4 +1,4 @@
-<div class="navbar bg-base-100">
+<div class="navbar bg-base-100 px-5">
     <div class="flex-1">
         <button class="btn btn-primary sidebarBtn text-xl"><i class="fa-solid fa-bars"></i></button>
     </div>
@@ -7,9 +7,6 @@
 
 
     <div class="flex-none">
-
-
-
 
         <div class="dropdown dropdown-end">
             <div tabindex="0" role="button" class="btn btn-ghost avatar">
@@ -56,5 +53,7 @@
                 </form>
             </ul>
         </div>
+
+
     </div>
 </div>

@@ -3,6 +3,7 @@
 
 <head>
     @include('admin.inc.style')
+    <meta name="csrf-token" content="{{ csrf_token() }}">
 </head>
 
 <body data-theme="fantasy">
@@ -11,11 +12,14 @@
 
     <div class="container m-auto">
         <div class="flex h-screen justify-center items-center">
-            <div class="w-full lg:w-1/2 shadow p-5 rounded-lg border">
+            <div class="w-full  lg:w-1/3 shadow p-5 rounded-3xl mx-3 border relative  pt-32">
                 <form method="POST" action="{{ route('register') }}">
                     @csrf
 
-                    <img src="/uploads/setting/{{ $setting->logo }}" class="w-44 h-44 m-auto" alt="{{ $setting->nameen }}" />
+                    <div class="absolute bg-gray-600 -top-24 border-4 w-fit rounded-full left-0 m-auto right-0">
+                        <img src="/uploads/setting/{{ $setting->logo }}" class="w-36 h-36 m-auto"
+                            alt="{{ $setting->nameen }}" />
+                    </div>
 
 
                     <div>

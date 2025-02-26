@@ -3,16 +3,17 @@
 
 <head>
     @include('admin.inc.style')
+    
 </head>
 
 <body data-theme="fantasy">
-    <div class="flex ">
+    <div class="flex h-screen overflow-y-hidden">
 
-        <div class="bg-fuchsia-950 h-screen w-0 overflow-hidden lg:w-64">
+        <div class="bg-fuchsia-950 sidebar h-min-screen transition-all duration-500   w-0 lg:w-56 overflow-scroll ">
             @include('admin.inc.sidebar')
         </div>
-        <div class="flex-1  ">
-            <div class="bg-white h-18 sticky top-0 border border-b-fuchsia-950">
+        <div class="flex-1 overflow-scroll  ">
+            <div class="bg-white h-18 sticky top-0 border z-50 border-b-fuchsia-950 ">
                 @include('admin.inc.header')
             </div>
             <div class="p-3">

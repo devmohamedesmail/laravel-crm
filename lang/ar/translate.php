@@ -20,7 +20,7 @@ return [
     "percent"=> " النسبة ",
     "trn_no"=> "TRN No",
     "branch"=> " الفرع ",
-    "added"=>" تم الاضافة ",
+    "added"=>"   تم الاضافه بنجاح ",
     "add"=>" اضافة ",
     "take-date"=> "  تاريخ الاستلام ",
     "give-date"=> " تاريخ التسليم ",
@@ -74,4 +74,10 @@ return [
     "add-purchase"=>" اضافة شراء ",
     "show-purchases"=>" عرض الشراء ",
     "purchases"=>" الشراء ",
+    "add-purchases"=>" اضافة الشراء ",
+    "thank-you"=>" شكرا لك ",
+    "start"=>" البدايه ",
+    "end"=>" النهايه ",
+    "close"=>" اغلاق ",
+    
 ];

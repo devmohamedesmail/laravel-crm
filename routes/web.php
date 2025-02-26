@@ -8,6 +8,7 @@ use App\Http\Controllers\webController\Staff_controller;
 use App\Http\Controllers\webController\Dashboard_controller;
 use App\Http\Controllers\webController\Invoices_controller;
 use App\Http\Controllers\webController\Purchases_controller;
+use App\Http\Controllers\webController\Sales_controller;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
 
@@ -59,6 +60,12 @@ Route::group(['prefix' => LaravelLocalization::setLocale()], function () {
     // invocies controller end
 
 
+
+    // sales
+    Route::controller(Sales_controller::class)->group(function(){
+        Route::get('show/sales/details','show_sales_details')->name('show.sales.details');
+        Route::get('filter/sales/invoices/{sales}','filter_sales_invoices')->name('filter.sales.invoices');
+    });
 
 
 

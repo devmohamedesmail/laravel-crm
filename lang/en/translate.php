@@ -20,7 +20,7 @@ return [
     "percent"=> "Percent",
     "trn_no"=> "TRN No",
     "branch"=> "Branch",
-    "added"=>"Added",
+    "added"=>"Added Successfully",
     "add"=>"Add",
     "take-date"=> " Date of Receipt ",
     "give-date"=> " Delivery Date",
@@ -76,6 +76,11 @@ return [
     "quantity"=>"Quantity",
     "price"=>"Price",
     "total"=>"Total",
+    "add-purchases"=>"Add Purchases",
+    "thank-you"=>"Thank You",
+    "start"=>"Start",
+    "end"=>"End",
+    "close"=>"Close",
     
    
 
