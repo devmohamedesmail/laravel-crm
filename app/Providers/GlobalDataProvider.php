@@ -7,7 +7,9 @@ use App\Models\Client;
 use App\Models\Invoice;
 use App\Models\Setting;
 use App\Models\InvoiceType;
+use App\Models\PaidMethod;
 use App\Models\Staff;
+use Faker\Provider\ar_EG\Payment;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
 
@@ -34,6 +36,9 @@ class GlobalDataProvider extends ServiceProvider
 
         $invoicesTypes = InvoiceType::all();
         View::share('invoicesTypes', $invoicesTypes);
+
+        $paymentMethods = PaidMethod::all();
+        View::share('paymentMethods', $paymentMethods);
 
         $clientData = Client::all();
         View::share('clientData', $clientData);

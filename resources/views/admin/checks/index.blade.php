@@ -39,7 +39,7 @@
                         <td>
 
                             <div class="dropdown">
-                                <div tabindex="0" role="button" class="btn m-1"> {{ __('translate.actions') }}</div>
+                                <div tabindex="0" role="button" class="btn btn-primary btn-xs m-1"> {{ __('translate.actions') }}</div>
                                 <ul tabindex="0"
                                     class="dropdown-content menu bg-base-100 rounded-box z-[1]  p-2 shadow">
                                     <li><a href="{{ route('edit.check', $check->id) }}">{{ __('translate.edit') }}</a>

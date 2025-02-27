@@ -64,7 +64,7 @@
                         <td>{{ $item->comments }}</td>
                         <td>
                             <div class="dropdown">
-                                <div tabindex="0" role="button" class="btn btn-primary m-1"> {{ __('translate.actions') }}</div>
+                                <div tabindex="0" role="button" class="btn btn-primary btn-xs m-1"> {{ __('translate.actions') }}</div>
                                 <ul tabindex="0" class="dropdown-content menu bg-base-100 rounded-box z-[1]  p-2 shadow">
                                   <li><a href="{{ route('edit.staff', $item->id) }}">{{ __('translate.edit') }}</a></li>
                                   <li><a href="{{ route('delete.staff', $item->id) }}" onclick="return confirm('Are You Sure To Delete This item')">{{ __('translate.delete') }}</a></li>

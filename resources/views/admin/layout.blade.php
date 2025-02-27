@@ -9,7 +9,7 @@
 <body data-theme="fantasy">
     <div class="flex h-screen overflow-y-hidden">
 
-        <div class="bg-fuchsia-950 sidebar h-min-screen transition-all duration-500   w-0 lg:w-56 overflow-scroll ">
+        <div class="bg-fuchsia-950 sidebar h-min-screen transition-all duration-500   w-0 lg:w-56 overflow-auto ">
             @include('admin.inc.sidebar')
         </div>
         <div class="flex-1 overflow-scroll  ">

@@ -32,7 +32,8 @@ Route::group(['prefix' => LaravelLocalization::setLocale()], function () {
 
 
 
-    Route::get('/', function () {return view('auth.login');});
+    Route::get('/', function () {
+        return view('auth.login');});
 
 
 

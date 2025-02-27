@@ -9,14 +9,27 @@
 
 
 @if (session('success'))
-<div role="alert" class="alert my-5">
-    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="stroke-info h-6 w-6 shrink-0">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-            d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-    </svg>
-    <span>{{ session('success') }}</span>
-    <button class="btn btn-sm btn-primary" onclick="this.parentElement.remove()"><i class="fa-solid fa-xmark"></i></button>
-</div>
+      
+        
+<dialog id="my_modal_1" class="modal">
+    <div class="modal-box">
+        <h3 class="text-3xl font-bold text-center">{{ __('translate.thank-you') }} {{ auth()->user()->name }} 👋</h3>
+        <p class="py-4 text-center">{{ session('success') }}</p>
+        <div class="modal-action">
+            <form method="dialog">
+                
+              <div class="flex">
+                <button class="btn btn-primary  mx-1">{{ __('translate.close') }}</button>
+        
+              </div>
+            </form>
+        </div>
+    </div>
+</dialog>
+
+<script>
+  document.getElementById("my_modal_1").showModal()
+</script>
 @endif
 
 
@@ -25,7 +38,7 @@
 
 
     <div class="flex bg-white justify-between items-center">
-        <h4>{{ __('translate.edit') }}</h6>
+        <h4 class="font-bold text-2xl">{{ __('translate.edit') }}</h6>
             <a class="btn btn-primary" href="{{ route('show.invoices') }}">{{ __('translate.show-invoices') }}</a>
     </div>
 
@@ -42,7 +55,7 @@
             <div>
                 <label
                     class="mb-2 font-bold block @if (app()->getlocale() === 'ar') text-right @endif">{{ __('translate.branch') }}</label>
-                <select class="select select-primary w-fullr" name="branch">
+                <select class="select select-primary w-full" name="branch">
                     <option selected value="{{ $invoice->branch_id }}">{{ $invoice->branchName }}</option>
                     @foreach ($branches as $branch)
                         <option value="{{ $branch->id }}"> {{ $branch->name }} </option>
@@ -65,8 +78,19 @@
 
             </div>
 
+            
+            <div>
+                <label
+                    class="mb-2 font-bold block @if (app()->getlocale() === 'ar') text-right @endif">{{ __('translate.paidmethod') }}</label>
 
+                <select class="select select-primary w-full " name="invoiceType">
 
+                    @foreach ($paymentMethods as $method)
+                        <option value="{{ $method->method }}"> {{ $method->method }} </option>
+                    @endforeach
+                </select>
+
+            </div>
 
 
 
@@ -245,16 +269,16 @@
 
 
 
-
-            <div class="col-span-2">
-                <button type="submit" class="btn btn-primary w-full">{{ __('translate.edit') }}</button>
-            </div>
-
+            
+         
 
 
         </div>
 
 
+        <div class="mt-2">
+            <button type="submit" class="btn btn-primary w-full">{{ __('translate.edit') }}</button>
+        </div>
 
 
      

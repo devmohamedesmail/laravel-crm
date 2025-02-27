@@ -34,8 +34,10 @@ class Sales_controller extends Controller
         $start = $request->start;
         $end = $request->end;
         $type = $request->invoicetype;
+        $paidMethod = $request->paidMethod;
         $invoices = Invoice::where("sales", $sales)
         ->where("invoiceType", $type)
+        ->where("paidMethod", $paidMethod)
         ->whereBetween('created_at', [$start . ' 00:00:00', $end . ' 23:59:59'])
         ->get();
 

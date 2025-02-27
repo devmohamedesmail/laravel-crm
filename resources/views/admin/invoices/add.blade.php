@@ -23,9 +23,9 @@
                     <form method="dialog">
                         
                       <div class="flex">
-                        <button class="btn btn-primary w-full mx-1">{{ __('translate.close') }}</button>
+                        <button class="btn btn-primary  mx-1">{{ __('translate.close') }}</button>
                         
-                         <a href="{{ route('print.invoice', session('invoice_id')) }}"  class="btn btn-primary btn-outline w-full mx-1">
+                         <a href="{{ route('print.invoice', session('invoice_id')) }}"  class="btn btn-primary btn-outline  mx-1">
                             {{ __('translate.print') }}
                         </a> 
                       </div>

@@ -81,6 +81,10 @@ return [
     "start"=>"Start",
     "end"=>"End",
     "close"=>"Close",
+    "home"=>"Home",
+    "paidmethod"=>"Paid Method",
+    "filter"=>"Filter",
+    "reset"=>"Reset",
     
    
 
